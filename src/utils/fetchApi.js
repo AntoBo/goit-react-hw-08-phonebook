@@ -26,12 +26,12 @@ export const fetchLogoutUser = async () => {
 };
 
 export const fetchCurrentUser = async localToken => {
-  console.log('getting user...');
-  console.log(localToken);
+  // console.log('getting user...');
+  // console.log(localToken);
   setToken('Bearer ' + localToken);
   const resp = await axios.get('/users/current');
-  console.log('got user!');
-  console.log(resp);
+  // console.log('got user!');
+  // console.log(resp);
   return resp.data;
 };
 
@@ -46,8 +46,9 @@ export const fetchDeleteContact = async id => {
   return id;
 };
 
-export const fetchEditContact = async ({ id, contact }) => {
-  await axios.delete('/contacts/' + id, contact);
+export const fetchEditContact = async contact => {
+  const { id, email, name } = contact;
+  await axios.delete('/contacts/' + id, { email, name });
   return id;
 };
 

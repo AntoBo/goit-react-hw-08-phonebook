@@ -17,7 +17,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLogged = useSelector(getIsLogged);
   const token = useSelector(getToken);
-  console.log('token in App ', token);
+  // console.log('token in App ', token);
 
   useEffect(() => {
     isLogged && dispatch(updateUser(token));
