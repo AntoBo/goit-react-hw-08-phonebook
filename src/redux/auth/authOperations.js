@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   fetchCurrentUser,
-  fetchGetCurrentUser,
   fetchLoginUser,
   fetchLogoutUser,
   fetchRegisterUser,

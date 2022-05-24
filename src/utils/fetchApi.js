@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-// const TOKEN = axios.defaults.headers.common['Authorization'];
 
 const setToken = token => {
   axios.defaults.headers.common['Authorization'] = token;
 };
 
+//user
 export const fetchRegisterUser = async newUser => {
   const resp = await axios.post('/users/signup', newUser);
   setToken('Bearer ' + resp.data.token);
@@ -16,16 +16,11 @@ export const fetchRegisterUser = async newUser => {
 export const fetchLoginUser = async userData => {
   const resp = await axios.post('/users/login', userData);
   setToken('Bearer ' + resp.data.token);
-  //   console.log('token is: ', axios.defaults.headers.common['Authorization']);
   return resp.data;
 };
 
 export const fetchLogoutUser = async () => {
-  //   console.log('logging out...');
-  //   console.log('token is: ', axios.defaults.headers.common['Authorization']);
   const resp = await axios.post('/users/logout');
-  //   console.log('logging out done');
-
   setToken('');
   return resp.data;
 };
@@ -40,6 +35,23 @@ export const fetchCurrentUser = async localToken => {
   return resp.data;
 };
 
-export const fetchAllContacts = async () => {};
-export const fetchAddContact = async () => {};
-export const fetchRemoveContact = async () => {};
+//contacts
+export const fetchAllContacts = async () => {
+  const res = await axios.get('/contacts');
+  return res.data;
+};
+
+export const fetchDeleteContact = async id => {
+  await axios.delete('/contacts/' + id);
+  return id;
+};
+
+export const fetchEditContact = async ({ id, contact }) => {
+  await axios.delete('/contacts/' + id, contact);
+  return id;
+};
+
+export const fetchAddContact = async contact => {
+  const newContact = await axios.post('/contacts', contact);
+  return newContact.data;
+};
