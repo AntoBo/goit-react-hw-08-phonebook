@@ -1,4 +1,9 @@
-import { loginUser, logoutUser, registerUser } from './authOperations';
+import {
+  loginUser,
+  logoutUser,
+  registerUser,
+  updateUser,
+} from './authOperations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -55,6 +60,20 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    //update
+    [updateUser.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [updateUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    [updateUser.fulfilled]: (state, { payload }) => ({
+      ...state,
+      user: { ...payload },
+      isLoading: false,
+    }),
   },
 });
 
