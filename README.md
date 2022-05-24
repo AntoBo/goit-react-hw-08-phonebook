@@ -1,3 +1,5 @@
+Create your own phone contacts collection
+
 **Read in other languages: [Русский](README.md), [Polska](README.pl.md).**
 
 # React homework template
