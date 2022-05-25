@@ -5,8 +5,10 @@ import { updateUser } from 'redux/auth/authOperations';
 import { getIsLogged, getToken } from 'redux/auth/authSelectors';
 
 import ContactPage from './ContactPage/ContactPage';
+import ErrorWrapper from './ErrorWrapper/ErrorWrapper';
 import Header from './Header/Header';
 import HomePage from './HomePage/HomePage';
+import LoaderWrap from './LoaderWrap/LoaderWrap';
 
 import LoginPage from './pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
@@ -17,7 +19,6 @@ export const App = () => {
   const dispatch = useDispatch();
   const isLogged = useSelector(getIsLogged);
   const token = useSelector(getToken);
-  // console.log('token in App ', token);
 
   useEffect(() => {
     isLogged && dispatch(updateUser(token));
@@ -25,37 +26,41 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+      <ErrorWrapper>
+        <LoaderWrap>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute>
-              <ContactPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <RegisterForm />
-            </PublicRoute>
-          }
-        />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute>
+                  <ContactPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegisterForm />
+                </PublicRoute>
+              }
+            />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </LoaderWrap>{' '}
+      </ErrorWrapper>
     </>
   );
 };

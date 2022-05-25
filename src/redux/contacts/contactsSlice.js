@@ -8,7 +8,11 @@ const contactsSlice = createSlice({
     contacts: [],
     filter: '',
   },
-  reducers: {},
+  reducers: {
+    setFilter: (state, { payload }) => {
+      state.filter = payload;
+    },
+  },
   extraReducers: {
     [getContacts.fulfilled]: (state, { payload }) => ({
       ...state,
@@ -24,3 +28,4 @@ const contactsSlice = createSlice({
 });
 
 export default contactsSlice.reducer;
+export const { setFilter } = contactsSlice.actions;

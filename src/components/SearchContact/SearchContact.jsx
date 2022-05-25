@@ -1,11 +1,13 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilterSelector } from 'redux/contacts/contactsSelectors';
+import { setFilter } from 'redux/contacts/contactsSlice';
 
 const SearchContact = () => {
+  const dispatch = useDispatch();
   const searchValue = useSelector(getFilterSelector);
 
   const handleChange = e => {
-    console.log('search changing');
+    dispatch(setFilter(e.target.value));
   };
 
   return (
