@@ -9,9 +9,18 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const [repeatePassword, setRepeatePassword] = useState('');
 
+  const checkPasswordBeforeDispatch = () => {
+    if (password !== repeatePassword) {
+      alert('Input matching password');
+      return;
+    } else {
+      dispatch(registerUser({ name, email, password }));
+    }
+  };
+
   const handeSubmit = e => {
     e.preventDefault();
-    dispatch(registerUser({ name, email, password }));
+    checkPasswordBeforeDispatch();
   };
 
   const changeHandler = e => {
@@ -65,7 +74,7 @@ const RegisterForm = () => {
           value={password}
           onChange={changeHandler}
           required
-          type="text"
+          type="password"
           name="password"
           autoComplete="off"
         />
@@ -76,7 +85,7 @@ const RegisterForm = () => {
           value={repeatePassword}
           onChange={changeHandler}
           required
-          type="text"
+          type="password"
           name="repeatePassword"
           autoComplete="off"
         />

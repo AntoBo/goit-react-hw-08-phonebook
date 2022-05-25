@@ -5,6 +5,7 @@ import { updateUser } from 'redux/auth/authOperations';
 import { getIsLogged, getToken } from 'redux/auth/authSelectors';
 
 import ContactPage from './ContactPage/ContactPage';
+import ErrorPage from './ErrorPage/ErrorPage';
 import ErrorWrapper from './ErrorWrapper/ErrorWrapper';
 import Header from './Header/Header';
 import HomePage from './HomePage/HomePage';
@@ -26,12 +27,11 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
+      <Header />
       <ErrorWrapper>
         <LoaderWrap>
-          <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
-
             <Route
               path="/contacts"
               element={
@@ -56,10 +56,11 @@ export const App = () => {
                 </PublicRoute>
               }
             />
+            <Route path="/error" element={<ErrorPage />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-        </LoaderWrap>{' '}
+        </LoaderWrap>
       </ErrorWrapper>
     </>
   );
