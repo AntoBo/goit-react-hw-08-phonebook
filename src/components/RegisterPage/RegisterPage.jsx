@@ -1,6 +1,4 @@
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { useDispatch } from 'react-redux';
-import { registerUser } from 'redux/auth/authOperations';
 
 const RegisterPage = () => {
   return (

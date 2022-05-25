@@ -1,0 +1,24 @@
+.buttonLink {
+  background-color: rgb(80, 109, 190);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 70px;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &:hover {
+    background-color: rgb(65, 91, 163);
+  }
+  &:active {
+    background-color: rgb(48, 74, 143);
+  }
+}

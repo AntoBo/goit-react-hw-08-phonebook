@@ -23,7 +23,6 @@ export const App = () => {
 
   useEffect(() => {
     isLogged && dispatch(updateUser(token));
-    console.log('updateUser fired');
   }, [dispatch]);
   return (
     <>

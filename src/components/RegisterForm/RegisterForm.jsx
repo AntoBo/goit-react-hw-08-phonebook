@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/authOperations';
+import s from './RegisterForm.module.scss';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handeSubmit}>
+    <form className={s.form} onSubmit={handeSubmit}>
       <label>
         Name:
         <input
@@ -90,7 +91,9 @@ const RegisterForm = () => {
           autoComplete="off"
         />
       </label>
-      <button type="submit">Register</button>
+      <button className="buttonLink" type="submit">
+        Register
+      </button>
     </form>
   );
 };

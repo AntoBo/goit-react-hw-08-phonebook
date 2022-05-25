@@ -18,7 +18,11 @@ const statusSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetError: (state, { payload }) => {
+      state.error = null;
+    },
+  },
   extraReducers: {
     //user
     //reg
@@ -120,3 +124,4 @@ const statusSlice = createSlice({
 });
 
 export default statusSlice.reducer;
+export const { resetError } = statusSlice.actions;

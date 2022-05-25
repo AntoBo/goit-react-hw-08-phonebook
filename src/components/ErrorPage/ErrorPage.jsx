@@ -1,12 +1,21 @@
 import Notification from 'components/Notification/Notification';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { errorSelector } from 'redux/status/statusSelectors';
+import { resetError } from 'redux/status/statusSlice';
 
 const ErrorPage = () => {
-  //   const error = useSelector(errorSelector);
+  const dispatch = useDispatch();
+  const error = useSelector(errorSelector);
 
-  //   return <Notification message={'Wasted... ' + error} />;
-  return <p>ErrorPage content</p>;
+  useEffect(() => {
+    return () => {
+      dispatch(resetError());
+    };
+  }, []);
+
+  return <Notification message={'Wasted... ' + error} />;
+  // return <p>ErrorPage content</p>;
 };
 
 export default ErrorPage;

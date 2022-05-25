@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/authOperations';
 
+import s from './LoginForm.module.scss';
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handeSubmit}>
+    <form onSubmit={handeSubmit} className={s.form}>
       <label>
         Email:
         <input
@@ -50,7 +52,9 @@ const LoginForm = () => {
           name="password"
         />
       </label>
-      <button type="submit">Login</button>
+      <button className="buttonLink" type="submit">
+        Login
+      </button>
     </form>
   );
 };

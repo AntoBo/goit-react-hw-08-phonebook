@@ -4,14 +4,18 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getIsLogged } from 'redux/auth/authSelectors';
 
+import s from './Header.module.scss';
+
 const Header = () => {
   const isLogged = useSelector(getIsLogged);
 
   return (
-    <div>
-      <NavLink to="/">LOGO</NavLink>
+    <header className={s.header}>
+      <NavLink className={s.logo} to="/">
+        LOGO
+      </NavLink>
       {isLogged ? <UserMenu /> : <NavBar />}
-    </div>
+    </header>
   );
 };
 
