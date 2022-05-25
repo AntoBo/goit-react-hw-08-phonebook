@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/contactsOperations';
 import {
   getFilteredContacts,
+  getFilterSelector,
   isUserName,
 } from 'redux/contacts/contactsSelectors';
 
 const ContactPage = () => {
   const userHasName = useSelector(isUserName);
-  const gotContacts = useSelector(getFilteredContacts);
+  const filter = useSelector(getFilterSelector);
+  const contacts = useSelector(getFilteredContacts);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,12 +25,12 @@ const ContactPage = () => {
     <div className="container">
       {/* <h1>Contact Page content</h1> */}
       <FormNewContact />
-      {gotContacts.length > 0 ? (
-        <SearchContact />
+      <SearchContact />
+      {contacts.length > 0 ? (
+        <ContactsList />
       ) : (
-        <Notification message={'Phonebook is empty, add someone'} />
+        !filter && <Notification message={'Phonebook is empty, add someone'} />
       )}
-      <ContactsList />
     </div>
   );
 };

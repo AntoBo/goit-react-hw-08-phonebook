@@ -4,18 +4,18 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { updateUser } from 'redux/auth/authOperations';
 import { getIsLogged, getToken } from 'redux/auth/authSelectors';
 
-import ContactPage from './ContactPage/ContactPage';
-import ErrorPage from './ErrorPage/ErrorPage';
+import ContactPage from '../pages/ContactPage/ContactPage';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ErrorWrapper from './ErrorWrapper/ErrorWrapper';
 import Header from './Header/Header';
-import HomePage from './HomePage/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 import LoaderWrap from './LoaderWrap/LoaderWrap';
 
-import LoginPage from './pages/LoginPage/LoginPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import RegisterForm from './RegisterForm/RegisterForm';
-import RegisterPage from './RegisterPage/RegisterPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 export const App = () => {
   const dispatch = useDispatch();
