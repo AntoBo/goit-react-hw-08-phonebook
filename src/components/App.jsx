@@ -14,7 +14,6 @@ import LoaderWrap from './LoaderWrap/LoaderWrap';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
-import RegisterForm from './RegisterForm/RegisterForm';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 export const App = () => {
