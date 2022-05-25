@@ -4,6 +4,11 @@ import {
   registerUser,
   updateUser,
 } from 'redux/auth/authOperations';
+import {
+  addContact,
+  getContacts,
+  removeContact,
+} from 'redux/contacts/contactsOperations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -15,6 +20,7 @@ const statusSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
+    //user
     //reg
     [registerUser.pending]: state => {
       state.isLoading = true;
@@ -67,6 +73,46 @@ const statusSlice = createSlice({
       state.error = null;
     },
     [updateUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    //contacts
+    //get
+    [getContacts.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [getContacts.fulfilled]: state => {
+      state.isLoading = false;
+      state.error = null;
+    },
+    [getContacts.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    //add
+    [addContact.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [addContact.fulfilled]: state => {
+      state.isLoading = false;
+      state.error = null;
+    },
+    [addContact.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    //remove
+    [removeContact.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [removeContact.fulfilled]: state => {
+      state.isLoading = false;
+      state.error = null;
+    },
+    [removeContact.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

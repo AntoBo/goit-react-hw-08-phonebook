@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contacts/contactsOperations';
 import { getContactsSelector } from 'redux/contacts/contactsSelectors';
 
 const FormNewContact = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContactsSelector);
@@ -31,11 +33,10 @@ const FormNewContact = () => {
   };
 
   const handleSubmit = e => {
-    const name = e.target.name.value;
     e.preventDefault();
     //check if name alrady exists
     if (hasName(name)) return;
-    // dispath(addContact({ name, number }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 

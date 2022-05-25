@@ -11,7 +11,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     token: null,
-    user: null,
+    user: { name: '', email: '' },
     // isLoading: false,
     // error: null,
   },
@@ -56,7 +56,7 @@ const authSlice = createSlice({
     // },
     [logoutUser.fulfilled]: state => {
       state.token = null;
-      state.user = null;
+      state.user = { name: '', email: '' };
       // state.isLoading = false;
       // state.error = null;
     },

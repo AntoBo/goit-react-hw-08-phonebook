@@ -21,7 +21,8 @@ export const App = () => {
 
   useEffect(() => {
     isLogged && dispatch(updateUser(token));
-  }, [isLogged, dispatch, token]);
+    console.log('updateUser fired');
+  }, [dispatch]);
   return (
     <>
       <Header />

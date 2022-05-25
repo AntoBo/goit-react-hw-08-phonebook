@@ -1,6 +1,10 @@
-const ContactsItem = ({ name, number, id }) => {
-  const handleClick = () => {
-    console.log('remove contact cklick');
+import { useDispatch } from 'react-redux';
+import { removeContact } from 'redux/contacts/contactsOperations';
+
+const ContactsItem = ({ contact: { name, number, id } }) => {
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(removeContact(id));
   };
 
   return (
@@ -8,7 +12,7 @@ const ContactsItem = ({ name, number, id }) => {
       <span>
         {name}: {number}
       </span>
-      <button onClick={handleClick} type="button">
+      <button onClick={handleDelete} type="button">
         x
       </button>
     </li>

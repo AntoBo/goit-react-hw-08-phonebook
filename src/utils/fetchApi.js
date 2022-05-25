@@ -26,17 +26,14 @@ export const fetchLogoutUser = async () => {
 };
 
 export const fetchCurrentUser = async localToken => {
-  // console.log('getting user...');
-  // console.log(localToken);
   setToken('Bearer ' + localToken);
   const resp = await axios.get('/users/current');
-  // console.log('got user!');
-  // console.log(resp);
   return resp.data;
 };
 
 //contacts
 export const fetchAllContacts = async () => {
+  console.log('');
   const res = await axios.get('/contacts');
   return res.data;
 };

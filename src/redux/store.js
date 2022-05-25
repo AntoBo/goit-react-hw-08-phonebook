@@ -19,16 +19,22 @@ const authPersistConfig = {
   key: 'token',
   version: 1,
   storage,
-  whitelist: ['token', 'user'],
+  whitelist: ['token'],
 };
 
 const authPersistedReducer = persistReducer(authPersistConfig, auth);
 
 export const store = configureStore({
   reducer: {
-    auth: authPersistedReducer,
     contacts: contactsSlice,
     status: statusSlice,
+    auth: authPersistedReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 export const persistor = persistStore(store);
