@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getIsLogged } from 'redux/auth/authSelectors';
+import { getIsLogged, getUserName } from 'redux/auth/authSelectors';
 import s from './HomePage.module.scss';
 
 const HomePage = () => {
   const isLogged = useSelector(getIsLogged);
+  const userName = useSelector(getUserName);
   return isLogged ? (
     <div className="container">
-      <h1>Proceed to contacts</h1>
+      <h1>Welcome, {userName}. Proceed to contacts</h1>
       <NavLink className="buttonLink" to="/contacts">
         Contacts
       </NavLink>

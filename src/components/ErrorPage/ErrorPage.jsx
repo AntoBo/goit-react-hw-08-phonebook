@@ -14,7 +14,11 @@ const ErrorPage = () => {
     };
   }, []);
 
-  return <Notification message={'Wasted... ' + error} />;
+  return (
+    <div className="container">
+      <Notification message={'Wasted... ' + error} />
+    </div>
+  );
   // return <p>ErrorPage content</p>;
 };
 

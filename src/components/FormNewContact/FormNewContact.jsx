@@ -72,10 +72,9 @@ const FormNewContact = () => {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">Add contact</button>
-      {/* <Loading /> */}
-      {/* {isLoading && <Loading />} */}
-      {/* {isLoading && showLoader && <Loading />} */}
+      <button className="buttonLink" type="submit">
+        Add contact
+      </button>
     </form>
   );
 };

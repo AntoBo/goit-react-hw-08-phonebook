@@ -6,11 +6,17 @@ const ContactsList = () => {
   const filteredContacts = useSelector(getFilteredContacts);
 
   return (
-    <ul>
-      {filteredContacts.map(contact => {
-        return <ContactsItem contact={contact} key={contact.id} />;
-      })}
-    </ul>
+    filteredContacts &&
+    filteredContacts.length > 0 && (
+      <>
+        <h2>Contacts:</h2>
+        <ul>
+          {filteredContacts.map(contact => {
+            return <ContactsItem contact={contact} key={contact.id} />;
+          })}
+        </ul>
+      </>
+    )
   );
 };
 

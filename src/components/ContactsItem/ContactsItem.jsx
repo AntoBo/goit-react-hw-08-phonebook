@@ -12,8 +12,8 @@ const ContactsItem = ({ contact: { name, number, id } }) => {
       <span>
         {name}: {number}
       </span>
-      <button onClick={handleDelete} type="button">
-        x
+      <button className="buttonLink" onClick={handleDelete} type="button">
+        Delete
       </button>
     </li>
   );

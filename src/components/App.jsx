@@ -15,6 +15,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import RegisterForm from './RegisterForm/RegisterForm';
+import RegisterPage from './RegisterPage/RegisterPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export const App = () => {
               path="/register"
               element={
                 <PublicRoute>
-                  <RegisterForm />
+                  <RegisterPage />
                 </PublicRoute>
               }
             />

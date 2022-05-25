@@ -20,8 +20,8 @@ const ContactPage = () => {
   }, [userHasName]);
 
   return (
-    <>
-      <h1>Contact Page content</h1>
+    <div className="container">
+      {/* <h1>Contact Page content</h1> */}
       <FormNewContact />
       {gotContacts.length > 0 ? (
         <SearchContact />
@@ -29,7 +29,7 @@ const ContactPage = () => {
         <Notification message={'Phonebook is empty, add someone'} />
       )}
       <ContactsList />
-    </>
+    </div>
   );
 };
 
